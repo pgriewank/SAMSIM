@@ -2008,6 +2008,9 @@ CONTAINS
     thickness  = 0._wp
     bulk_salin = SUM(S_abs(1:N_active))/SUM(m(1:N_active))
 
+
+
+    !Small sanity checks
     IF(N_top<3) THEN
        PRINT*,'Problem occurs when N_top smaller then 3, so just change it to 3 or more'
        STOP 666
@@ -2019,7 +2022,13 @@ CONTAINS
             & are  activated. Make sure this is your intent'
     END IF
 
-    PRINT*,'Initialization of testcase complete, testcase:',testcase
+    IF (tank_flag==2 .and. tank_depth ==0) THEN 
+       PRINT*,'Tank_flag 2 used but tank depth not defined or set to zero'
+       STOP 667
+    END IF
+
+
+PRINT*,'Initialization of testcase complete, testcase:',testcase
 
 
   END SUBROUTINE init

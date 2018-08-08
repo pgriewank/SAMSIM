@@ -91,7 +91,7 @@ fig1.subplots_adjust(bottom=0.1)
 #######################################################
 #Plotting bulk concentrations
 #######################################################
-ax1 = fig1.add_subplot(211, axisbg='grey')
+ax1 = fig1.add_subplot(211)
 zmin=0.
 zmax=bgc_bu.max()
 plt.pcolor(Xgrid,depth,bgc_bu,cmap='ocean_r',vmin=zmin,vmax=zmax)
@@ -105,11 +105,12 @@ plt.plot(Xaxis[:],freeboard[:],'k--')
 plt.ylabel(r'depth [m]')
 #ax1.set_title('Tracer II')
 ax1.xaxis.set_ticklabels([])
+ax1.set_facecolor((0.5,0.5,0.5))
 
 #######################################################
 #Plotting brine concentrations
 #######################################################
-ax2 = fig1.add_subplot(212,axisbg='grey')
+ax2 = fig1.add_subplot(212)
 fsize=10.
 zmin=0.
 zmax=bgc_br.max()
@@ -123,6 +124,7 @@ ax2.fill_between(Xaxis[:],freeboard[:], snow[:,0]+freeboard[:,],facecolor='white
 plt.plot(Xaxis[:],freeboard[:],'k--')
 plt.ylabel(r'depth [m]')
 plt.xlabel(r'time '+timeunit)
+ax2.set_facecolor((0.5,0.5,0.5))
 
 
 

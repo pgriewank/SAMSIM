@@ -18,6 +18,7 @@
 !! @par Revision History
 !! Started by Philipp Griewank 2010-07-08
 !! Add function for styropor cover by Niels Fuchs, MPIMET (2017-01-03)
+!! Modified salinity functions by Philipp Griewank, Uni K (2018-08-01)
 
 MODULE mo_thermo_functions
 
@@ -291,17 +292,24 @@ CONTAINS
   !! Subroutine computes one S_br for one given T in Celsius by third-order polynomial.
   !! NaCl solutions and seawater produce slight variations. Which solution is used is determined by salt_flag.  
   !! S_br = c1+c2*T+c3*T^2+c4*T^3
+  !! Based on Notz 2005 p. 36
+  !! 
+  !! For T below -20 we simply use a linear extension based on "Composition of sea ice and its tensile strength".
+  !! The actual salinity function is much more complicated and depends on the salt composition, but the linear fit is far better than using the polynomial fit.
   !!
+  !! The NaCL precipitates at -22, leading to ice/salt kristall mix below -22. Ideally the whole code would be modified to take the non-continous transition at -22 but given that there is currently little interest I can't be bothered to put in the effor.
+  !! 
   !! @par Revision History
   !! First version by Philipp Griewank (2010-07-12)
   !! Changed to go through 0 by Philipp Griewank (2014-05-07)
+  !! Added linear bit by Philipp Griewank (2018-07-22)
 
   FUNCTION func_S_br(T,S_bu) RESULT (S_br)
     USE mo_data, ONLY:salt_flag
     IMPLICIT NONE
 
 
-    REAL(wp)                      :: c1,c2,c3,c4 
+    REAL(wp)                      :: c1,c2,c3,c4,T_crit,S_0,ddT_S_0
     REAL(wp), INTENT(in)          :: T  !<  Temperature in Celsius
     REAL(wp), INTENT(in),OPTIONAL :: S_bu
 
@@ -309,8 +317,7 @@ CONTAINS
 
 
 
-
-
+    T_crit = -20._wp
     IF (salt_flag==1) THEN
        !Saltwater coefficients
        c1  =  0.0_wp
@@ -327,6 +334,15 @@ CONTAINS
     END IF
 
     S_br = c1 + c2*T + c3*T**2._wp + c4*T**3._wp
+    
+    IF (T.lt.T_crit) THEN
+
+        S_0     = c1 + c2*T_crit + c3*T_crit**2._wp + c4*T_crit**3._wp
+        ddT_S_0 = c2 + 2._wp*c3*T_crit + 3._wp*c4*T_crit**2._wp
+        S_br    = S_0+ddT_S_0*(T-T_crit)
+
+    END IF
+
 
     IF(PRESENT(S_bu))THEN
        IF( S_br<S_bu) THEN
@@ -345,21 +361,29 @@ CONTAINS
   !! Based on Notz 2005 p. 36
   !! ddT_S_br = c2+2*c3*T+3*c4*T^2
   !!
+  !! For T below -20 we simply use a linear extension based on "Composition of sea ice and its tensile strength".
+  !! The actual salinity function is much more complicated and depends on the salt composition, but the linear fit is far better than using the polynomial fit.
+  !!
+  !!
+  !! The NaCL precipitates at -22, leading to ice/salt kristall mix below -22. Ideally the whole code would be modified to take the non-continous transition at -22 but given that there is currently little interest I can't be bothered to put in the effor.
+  !!
   !! @par Revision History
   !! First version by Philipp Griewank (2010-07-13)
-  !!
+  !! Added linear bit by Philipp Griewank (2018-07-22)
 
   FUNCTION func_ddT_S_br(T) RESULT (ddT_S_br)
     USE mo_data, ONLY:salt_flag
     IMPLICIT NONE
 
 
-    REAL(wp)             :: c2,c3,c4
+    REAL(wp)             :: c2,c3,c4,T_crit
 
     REAL(wp), INTENT(in) :: T  !<  Temperature in Celsius
 
     REAL(wp)             :: ddT_S_br !<  derivative of Brine salinity
 
+
+    T_crit = -20._wp
     IF (salt_flag==1) THEN
        !Saltwater coefficients
        c2  =  -21.4_wp
@@ -374,6 +398,12 @@ CONTAINS
     END IF
 
     ddT_S_br = c2 + 2._wp*c3*T + 3._wp*c4*T**2._wp
+    
+    IF (T.lt.T_crit) THEN
+
+        ddT_S_br = c2 + 2._wp*c3*T_crit + 3._wp*c4*T_crit**2._wp
+
+    END IF
 
   END FUNCTION func_ddT_S_br
   

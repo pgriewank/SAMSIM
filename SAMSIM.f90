@@ -58,17 +58,19 @@
 !!
 !!
 !!  COPYRIGHT
-!!        Copyright (c) 2014 Max-Planck-Institut fuer Meteorologie, Hamburg,
-!!        Germany
 !!
-!!        Copying and distribution of this file, with or without modification,
-!!        are permitted in any medium without royalty provided the copyright
-!!        notice and this notice are preserved.  This file is offered as-is,
-!!        without any warranty.
+!! This file is part of SAMSIM.
+!!
+!!  SAMSIM is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+!!
+!!  SAMSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+!!
+!!  You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <http://www.gnu.org/licenses/>.
 !!
 !! @par Revision History
 !! Started by Philipp Griewank 2014-05-05
 !! nothing changed here by Niels Fuchs, MPIMET (2017-03-01)
+!! License changed by Philipp Griewank 2018-05-22
 !!
 PROGRAM SAMSIM
   USE mo_grotz 

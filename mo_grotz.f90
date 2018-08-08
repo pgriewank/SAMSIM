@@ -3,7 +3,7 @@
 !! 
 !! The module mo_grotz contains the most important subroutine grotz (Named after GRiewank nOTZ).
 !! Mo_grotz is called by SAMSIM.f90. SAMSIM.f90's only purpose is to set the testcase number and description string. 
-!! Subroutine grotz contains the time integral, as well as  the initialization, and calls all other branches of the model.
+!! Subroutine grotz contains the time loop, as well as  the initialization, and calls all other branches of the model.
 !! This model was developed from scratch by Philipp Griewank during and after his PhD at  Max Planck Institute of Meteorology from 2010-2014.
 !! The code is intended to be understandable and most subroutines, modules, functions, parameters, and global variables have doxygen compatible descriptions. 
 !! In addition to the doxygen generated description, some python plotscripts are available to plot model output.
@@ -39,8 +39,36 @@ CONTAINS
   !!
   !! Main subroutine of SAMSIM, a 1D thermodynamic seaice model. 
   !! A semi-adaptive grid is used which is managed by mo_layer_dynamics.
-  !! To many things happen in this subroutine to describe in this description, you'll just have to go through it. 
-  !! 
+  !!
+  !! The basic rundown of the time loop is:
+  !! 1. Calculate the current ice/snow state and forcing, as well as gravity drainage and flooding
+  !! 2. Apply all the fluxes, recalculate ice state
+  !! 3. Flushing and layer dynamics
+  !!
+  !! Here is the full rundown of what happens in mo_grotz:
+  !!
+  !! - Initialization: all fields are initialized for the given testcase, and the output is formatted
+  !! - Input and Forcing read in: Only if needed by the chosen testcase
+  !! TIME LOOP BEGINS:
+  !!    - Calculate the total ice properties, total freshwater, thermal resistivity, energy, bulk salinity
+  !!    - Determine snow and rain rates
+  !!    - Calculate snow thermodynamics
+  !!    - Calculate inner ice thermodynamic fluxes
+  !!    - Calculate brine flux from expulsion
+  !!    - Raw output written out if debug_flag is set to 2
+  !!    - Standard output written 
+  !!    - Flooding parametrized
+  !!    - Lowest layer mixing with underlying water
+  !!    - Gravity drainage parametrized
+  !!    - Various testcase specifics
+  !!    - Calcuating and applying the heat fluxes
+  !!    - After heatfluxes are applied new liquidus thermal equilibrium is calculated 
+  !!    - Flushing is parametrized 
+  !!    - Chemistry advection calculated
+  !!    - Layer Dynamics 
+  !! TIME LOOP ENDS
+  !! -Final output, files closed, and fields deallocated
+  !!
   !!
   !! IMPORTANT:
   !! To get the correct freshwater amount make sure the freshwater is calculated using a salinity value to compare against.
@@ -51,7 +79,7 @@ CONTAINS
   !! @par Revision History
   !! Basic thermodynamics and layer_dynamics for fixed boundaries seem stable, backup made. by griewank (2010-08-10)
   !! Add some more outputs, changed routine names and arguments with respect to newly introduces flags by Niels Fuchs, MPIMET (2017-03-01)
-  !!
+  !! Added a bit of description with the run down of what happends by Philipp Griewank, Uni K (2018-08-08) 
   SUBROUTINE grotz ( testcase, description )
 
     USE mo_parameters
@@ -558,7 +586,7 @@ CONTAINS
 
 
        !##########################################################################################
-       !T and phi are recalculated before applying layer dynamics, this is not an optimal solution
+       !T and phi are recalculated before applying layer dynamics and flushing
        !##########################################################################################
        
        T_test = T_bottom

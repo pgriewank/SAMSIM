@@ -126,10 +126,7 @@ Functions/Subroutines</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Module houses functions which have no home :(. </p>
 <p>Created because I wanted to calculate the freeboard separately and didn't know where to put it.</p>
-<dl class="section author"><dt>Author</dt><dd>Philipp Griewank</dd></dl>
-<p>COPYRIGHT Copyright (c) 2014 Max-Planck-Institut fuer Meteorologie, Hamburg, Germany</p>
-<p>Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.</p>
-<dl class="section user"><dt>Revision History</dt><dd>Ribbon cut by Philipp Griewank 2011-01-07 </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Philipp Griewank </dd></dl>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
 <a class="anchor" id="aaec1e5ad6d7e3b52bbcb9eaad797333d"></a>
 <div class="memitem">
@@ -272,7 +269,11 @@ Functions/Subroutines</h2></td></tr>
 
 <p>Calculates the freeboard of the 1d ice column. </p>
 <p>The freeboard is calculated by first finding out which layer is at water level, and then finding out how deep the layer is submerged. For the correct freeboard the mass above water equals the buoyancy of the submerged part. Since the density of each layer is constant, step two can be calculated explicitly. The freeboard is the distance from the top of the ice to the water level. If snow pushes the ice underwater the freeboard becomes negative</p>
-<dl class="section user"><dt>Revision History</dt><dd>Built to spill by Philipp Griewank (2011-01-07) Negative freeboard included by Philipp Griewank (2011-01-09) Patched bug by Philipp Griewank (2011-03-10) Add freeboard_snow_flag calculation of snow mass, check the code for further explanations by Niels Fuchs, MPIMET (2017-03-91) </dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>Built to spill by Philipp Griewank (2011-01-07) <br />
+ Negative freeboard included by Philipp Griewank (2011-01-09) <br />
+ Patched bug by Philipp Griewank (2011-03-10) <br />
+ Add freeboard_snow_flag calculation of snow mass, check the code for further explanations by Niels Fuchs, MPIMET (2017-03-91) <br />
+ </dd></dl>
 
 </div>
 </div>

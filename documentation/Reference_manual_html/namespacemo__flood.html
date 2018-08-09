@@ -103,8 +103,11 @@ Functions/Subroutines</h2></td></tr>
 <div class="textblock"><p>Computes the fluxes caused by liquid flooding the snow layer. </p>
 <p>Water floods the snow layer instantly transforming it to ice which is added to the top layer. As long as the negative freeboard is smaller then a certain parameter (neg_free) the flood strength is limited by the harmonic mean permeability of the whole ice layer driven by the freeboard. When this parameter is exceed, instant flooding is assumed. Based on Ted Maksyms work, brine is moved from the ocean to the snow without interacting with the ice in between. Very little of the process is well understood, so this parametrisation is ID mostly speculation. Ratio_flood is a very important parameter, as it regulates how much wicking into the snow layer occurs during melting which dilutes the flooded snow. Ratio of two should lead to the snow pack being reduced twice as much as the top layer grows.</p>
 <dl class="section author"><dt>Author</dt><dd>Philipp Griewank</dd></dl>
-<p>COPYRIGHT Copyright (c) 2014 Max-Planck-Institut fuer Meteorologie, Hamburg, Germany</p>
-<p>Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.</p>
+<p>COPYRIGHT</p>
+<p>This file is part of SAMSIM.</p>
+<p>SAMSIM is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p>SAMSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
 <dl class="section user"><dt>Revision History</dt><dd>Copy and pasted into existence by Philipp Griewank, IMPRS (2011-01-21) </dd></dl>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
 <a class="anchor" id="a423c008046e4fe76ee7c039f20499c91"></a>
@@ -235,7 +238,8 @@ Functions/Subroutines</h2></td></tr>
 
 <p>Subroutine for calculating flooding. </p>
 <p>Details explained in module description.</p>
-<dl class="section user"><dt>Revision History</dt><dd>Formed by Philipp Griewank, IMPRS (2011-01-21) Cleaned and commented by Philipp Griewank, (2014-04-19) </dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>Formed by Philipp Griewank, IMPRS (2011-01-21) <br />
+ Cleaned and commented by Philipp Griewank, (2014-04-19) </dd></dl>
 
 </div>
 </div>

@@ -118,9 +118,15 @@ Functions/Subroutines</h2></td></tr>
 <div class="textblock"><p>Contains subroutines and functions related to multi-phase thermodynamics. </p>
 <p>See the subroutine and function descriptions for details.</p>
 <dl class="section author"><dt>Author</dt><dd>Philipp Griewank</dd></dl>
-<p>COPYRIGHT Copyright (c) 2014 Max-Planck-Institut fuer Meteorologie, Hamburg, Germany</p>
-<p>Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.</p>
-<dl class="section user"><dt>Revision History</dt><dd>Started by Philipp Griewank 2010-07-08 Add function for styropor cover by Niels Fuchs, MPIMET (2017-01-03) </dd></dl>
+<p>COPYRIGHT</p>
+<p>This file is part of SAMSIM.</p>
+<p>SAMSIM is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p>SAMSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<dl class="section user"><dt>Revision History</dt><dd>Started by Philipp Griewank 2010-07-08 <br />
+ Add function for styropor cover by Niels Fuchs, MPIMET (2017-01-03) <br />
+ Modified salinity functions by Philipp Griewank, Uni K (2018-08-01) <br />
+ </dd></dl>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
 <a class="anchor" id="a496502a26a4054102c372950c749c68d"></a>
 <div class="memitem">
@@ -178,7 +184,8 @@ Functions/Subroutines</h2></td></tr>
 
 <p>Determines Brine flux expelled from out of a layer due to freezing. </p>
 <p>If the volume of ice and brine exceed the Volume of the layer brine is expelled. The volume of the ejected brine is calculated and exported. The volume fractions are also calculated.</p>
-<dl class="section user"><dt>Revision History</dt><dd>first version by Philipp Griewank, (2010-07-19) changes to mass, Enthalpy and Salinity are now computed in subroutine mass_transfer by Philipp Griewank, (2010-08-24) </dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>first version by Philipp Griewank, (2010-07-19) <br />
+ changes to mass, Enthalpy and Salinity are now computed in subroutine mass_transfer by Philipp Griewank, (2010-08-24) </dd></dl>
 
 </div>
 </div>
@@ -198,7 +205,10 @@ Functions/Subroutines</h2></td></tr>
 
 <p>Computes temperature derivative of brine pocket salinity for given temperature in Celsius of mushy layer. </p>
 <p>Subroutine computes one ddT_S_br for one given T NaCl solutions and seawater produce slight variations. Which solution is used is specified by salt_flag. Based on Notz 2005 p. 36 ddT_S_br = c2+2*c3*T+3*c4*T^2</p>
-<dl class="section user"><dt>Revision History</dt><dd>First version by Philipp Griewank (2010-07-13)</dd></dl>
+<p>For T below -20 we simply use a linear extension based on "Composition of sea ice and its tensile strength". The actual salinity function is much more complicated and depends on the salt composition, but the linear fit is far better than using the polynomial fit.</p>
+<p>The NaCL precipitates at -22, leading to ice/salt kristall mix below -22. Ideally the whole code would be modified to take the non-continous transition at -22 but given that there is currently little interest I can't be bothered to put in the effor.</p>
+<dl class="section user"><dt>Revision History</dt><dd>First version by Philipp Griewank (2010-07-13) <br />
+ Added linear bit by Philipp Griewank (2018-07-22)</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Temperature in Celsius</td></tr>
@@ -234,8 +244,13 @@ Functions/Subroutines</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Computes salinity of brine pockets for given temperature in Celsius of mushy layer. </p>
-<p>Subroutine computes one S_br for one given T in Celsius by third-order polynomial. NaCl solutions and seawater produce slight variations. Which solution is used is determined by salt_flag. S_br = c1+c2*T+c3*T^2+c4*T^3</p>
-<dl class="section user"><dt>Revision History</dt><dd>First version by Philipp Griewank (2010-07-12) Changed to go through 0 by Philipp Griewank (2014-05-07)</dd></dl>
+<p>Subroutine computes one S_br for one given T in Celsius by third-order polynomial. NaCl solutions and seawater produce slight variations. Which solution is used is determined by salt_flag. S_br = c1+c2*T+c3*T^2+c4*T^3 Based on Notz 2005 p. 36</p>
+<p>For T below -20 we simply use a linear extension based on "Composition of sea ice and its tensile strength". The actual salinity function is much more complicated and depends on the salt composition, but the linear fit is far better than using the polynomial fit.</p>
+<p>The NaCL precipitates at -22, leading to ice/salt kristall mix below -22. Ideally the whole code would be modified to take the non-continous transition at -22 but given that there is currently little interest I can't be bothered to put in the effor.</p>
+<dl class="section user"><dt>Revision History</dt><dd>First version by Philipp Griewank (2010-07-12) <br />
+ Changed to go through 0 by Philipp Griewank (2014-05-07) <br />
+ Added linear bit by Philipp Griewank (2018-07-22) <br />
+</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Temperature in Celsius</td></tr>
@@ -296,7 +311,9 @@ Functions/Subroutines</h2></td></tr>
 
 <p>Determines equilibrium Temperature of a layer for given S_bu and H as well as solid fraction. </p>
 <p>The temperature of a fully liquid layer is used to see if the resulting brine salinity is lower than the bulk salinity. After checking if the layer is a fluid or a mushy layer the temperature is calculated by solving f(T) = 0 using the Newton method. f(T) = -latent_heat-H+latent_heat*S_bu/S_br(T) + c_s*T+c_s_beta*T^2/2 f'(T) = c_s+c_s_beta*T-latent_heat*S_bu*S_br'(T)/S_br^2 Described in Notz2005, subsubsection 5.6.1. See func_S_br(T) and func_ddT_S_br(T). First guess T_0 must be given, low first guess lead to overshooting which would lead to very high Temperatures. To avoid this, an if loop sets T to freezing T when T&gt;0. Freezing T is also calculated at the beginning using the Newton-Method. If S_bu&lt;0.001 then it is treated as pure ice.</p>
-<dl class="section user"><dt>Revision History</dt><dd>first version by Philipp Griewank (2010-07-13) Freezing temperature is calculated and introduced if T goes above 0 by Philipp Griewank (2010-07-13) Added if loops to deal with saltless ice by Philipp Griewank (2010-11-27)</dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>first version by Philipp Griewank (2010-07-13) <br />
+ Freezing temperature is calculated and introduced if T goes above 0 by Philipp Griewank (2010-07-13) <br />
+ Added if loops to deal with saltless ice by Philipp Griewank (2010-11-27)</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">h</td><td>Enthalpy [J/kg]</td></tr>

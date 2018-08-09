@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['samsim_20semi_2dadaptive_20multi_2dphase_20sea_2dice_20model_20v1_2e0',['SAMSIM Semi-Adaptive Multi-phase Sea-Ice Model V1.0',['../index.html',1,'']]],
+  ['samsim_20semi_2dadaptive_20multi_2dphase_20sea_2dice_20model_20v2_2e0',['SAMSIM Semi-Adaptive Multi-phase Sea-Ice Model V2.0',['../index.html',1,'']]],
   ['s_5fabs',['s_abs',['../namespacemo__data.html#a1c5796e7203138b94a8e845448dbc675',1,'mo_data']]],
   ['s_5fabs_5fsnow',['s_abs_snow',['../namespacemo__data.html#a714e652068c33ee65cf1d81cf8beb4c0',1,'mo_data']]],
   ['s_5fbr',['s_br',['../namespacemo__data.html#ad9edb4b63a7f4f4679318a402b43ccb5',1,'mo_data']]],

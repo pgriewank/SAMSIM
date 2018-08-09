@@ -12,6 +12,7 @@
 !! SAMSIM.f90 is the root program of the SAMSIM, the 1D thermodynamic Semi-Adaptive Multi-phase Sea-Ice Model.
 !! However, in SAMSIM.f90 only the testcase and description thread are specified, which are then passed on to mo_grotz, which is where most of the actual work is done, including timestepping. 
 !! The code is intended to be understandable and subroutines, modules, functions, parameters, and global variables all have (more or less) doxygen compatible descriptions. 
+!! Both a pdf and html documentation generated via doxygen are included under documentation.
 !!
 !! WARNING: SAMSIM was developed and was/is used for scientific purposes. It likely contains a few undetected bugs, can easily be crashed by using non-logical input settings, and some of the descriptions and comments may be outdated.  Always check the plausibility of the model results!
 !!

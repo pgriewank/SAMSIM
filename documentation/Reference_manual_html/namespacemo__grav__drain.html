@@ -102,9 +102,11 @@ Functions/Subroutines</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Computes the Salt fluxes caused by gravity drainage. </p>
 <dl class="section author"><dt>Author</dt><dd>Philipp Griewank</dd></dl>
-<p>COPYRIGHT Copyright (c) 2014 Max-Planck-Institut fuer Meteorologie, Hamburg, Germany</p>
-<p>Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.</p>
-<dl class="section user"><dt>Revision History</dt><dd>Injected with life by Philipp Griewank, IMPRS (&lt;2010-08-27&gt;) </dd></dl>
+<p>COPYRIGHT</p>
+<p>This file is part of SAMSIM.</p>
+<p>SAMSIM is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p>SAMSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
 <a class="anchor" id="a6aad31c666ce2930b2cfb44876c4395e"></a>
 <div class="memitem">
@@ -256,7 +258,11 @@ Functions/Subroutines</h2></td></tr>
 <p>IMPORTANT: The height assumptions are special. The bottom of the ice edge is assumed to be at psi_s(N_active)/psi_s_min *thick_0</p>
 <p>The first approach assumed that brine drainage occurred between two layers but performed poorly.</p>
 <p>If grav_heat_flag is set to 2 the amount of heat transported out of the ice will be compensated in the lowest layer</p>
-<dl class="section user"><dt>Revision History</dt><dd>created by Philipp Griewank, IMPRS (2010-08-27) Completely revised to assume brine channels by Philipp Griewank , IMPRS (2010-11-05) Mass_transfer is used to advect H and S by Philipp Griewank, IMPRS (2010-11-05) Added condition S_br(k)&gt;S_br(k+1) by Philipp Griewank. IMPRS (2011-04-29) Added harmonic mean for permeability by Philipp Griewank (2014-01-05)</dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>created by Philipp Griewank, IMPRS (2010-08-27) <br />
+ Completely revised to assume brine channels by Philipp Griewank , IMPRS (2010-11-05) <br />
+ Mass_transfer is used to advect H and S by Philipp Griewank, IMPRS (2010-11-05) <br />
+ Added condition S_br(k)&gt;S_br(k+1) by Philipp Griewank. IMPRS (2011-04-29) <br />
+ Added harmonic mean for permeability by Philipp Griewank (2014-01-05)</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">ray</td><td>Rayleigh number </td></tr>

@@ -106,9 +106,11 @@ Functions/Subroutines</h2></td></tr>
 <div class="textblock"><p>Regulates mass transfers and their results. </p>
 <p>Ultimately all processes which involve a mass flux should be stored here.</p>
 <dl class="section author"><dt>Author</dt><dd>Philipp Griewank</dd></dl>
-<p>COPYRIGHT Copyright (c) 2014 Max-Planck-Institut fuer Meteorologie, Hamburg, Germany</p>
-<p>Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.</p>
-<dl class="section user"><dt>Revision History</dt><dd>Begin implementing Expulsion by Philipp Griewank, IMPRS (2010-08-24) </dd></dl>
+<p>COPYRIGHT</p>
+<p>This file is part of SAMSIM.</p>
+<p>SAMSIM is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p>SAMSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
 <a class="anchor" id="a5c111960ad5366a991e9462b1bf4c9e1"></a>
 <div class="memitem">
@@ -251,7 +253,8 @@ Functions/Subroutines</h2></td></tr>
 
 <p>Generates the fluxes caused by expulsion. </p>
 <p>Brine displaced by expansion of a freezing mushy layer lead to a mass, enthalpy and salt flux. This subroutine calculates the amount of brine which moves between the layers caused by V_ex and how the mass in the layers changes. Vary basic assumptions are made. Brine always moves downward (negative), no horizontal movement are allowed and gas pockets can be filled. The upper boundary layer is not permeable but the bottom one is. This subroutine was started as a quick and dirty way to simulate the bottom freezing experiment described in Notz 2005 p. 85</p>
-<dl class="section user"><dt>Revision History</dt><dd>Brought to life by Philipp Griewank, IMPRS (2010-08-24) Simplified by Philipp Griewank, IMPRS (2010-11-27) </dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>Brought to life by Philipp Griewank, IMPRS (2010-08-24) <br />
+ Simplified by Philipp Griewank, IMPRS (2010-11-27) </dd></dl>
 
 </div>
 </div>
@@ -324,7 +327,8 @@ Functions/Subroutines</h2></td></tr>
 <p>Calculates the effects of mass transfers on H_abs and S_abs. </p>
 <p>The effects of brine displaced by expulsion, flushing or drainage expansion lead to changes in mass, salt ans enthalpy. This subroutine calculates the effects on S_abs and H_abs. A very simple upwind strategy is employed, Brine from below has T and S_br of the lower layer, and brine from above T and S_br of the upper layer. To avoid negative salinity, the maximum amount of advective salt is the total salt content of the layer. The amount of mass transfered is calculated in other subroutines.</p>
 <p>This subroutine was started as a quick and dirty way to simulate the bottom freezing experiment described in Notz 2005 p. 85 IMPORTANT: Before this subroutine expelled brine was removed from the system and its effects were determined in subroutine expulsion. S_bu must be up to date!</p>
-<dl class="section user"><dt>Revision History</dt><dd>Brought to life by Philipp Griewank, IMPRS (2010-08-24) Modified to work with all processes by Philipp Griewank, IMPRS (2010-11-27) </dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>Brought to life by Philipp Griewank, IMPRS (2010-08-24) <br />
+ Modified to work with all processes by Philipp Griewank, IMPRS (2010-11-27) </dd></dl>
 
 </div>
 </div>

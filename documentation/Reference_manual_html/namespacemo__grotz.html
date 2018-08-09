@@ -93,16 +93,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions/Subroutines</h2></td></tr>
 <tr class="memitem:a48ebd3aa83db1cb4087b1841142ec9bd"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemo__grotz.html#a48ebd3aa83db1cb4087b1841142ec9bd">grotz</a> (testcase, description)</td></tr>
-<tr class="memdesc:a48ebd3aa83db1cb4087b1841142ec9bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main subroutine of SAMSIM, a 1D thermodynamic seaice model. A semi-adaptive grid is used which is managed by <a class="el" href="namespacemo__layer__dynamics.html" title="Mo_layer_dynamics contains all subroutines for the growth and shrinking of layer thickness. ">mo_layer_dynamics</a>. To many things happen in this subroutine to describe in this description, you'll just have to go through it.  <a href="#a48ebd3aa83db1cb4087b1841142ec9bd">More...</a><br /></td></tr>
+<tr class="memdesc:a48ebd3aa83db1cb4087b1841142ec9bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main subroutine of SAMSIM, a 1D thermodynamic seaice model. A semi-adaptive grid is used which is managed by <a class="el" href="namespacemo__layer__dynamics.html" title="Mo_layer_dynamics contains all subroutines for the growth and shrinking of layer thickness. ">mo_layer_dynamics</a>.  <a href="#a48ebd3aa83db1cb4087b1841142ec9bd">More...</a><br /></td></tr>
 <tr class="separator:a48ebd3aa83db1cb4087b1841142ec9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The most important module of SAMSIM. </p>
-<p>The module <a class="el" href="namespacemo__grotz.html" title="The most important module of SAMSIM. ">mo_grotz</a> contains the most important subroutine grotz (Named after GRiewank nOTZ). Mo_grotz is called by <a class="el" href="SAMSIM_8f90.html">SAMSIM.f90</a>. <a class="el" href="SAMSIM_8f90.html">SAMSIM.f90</a>'s only purpose is to set the testcase number and description string. Subroutine grotz contains the time integral, as well as the initialization, and calls all other branches of the model. This model was developed from scratch by Philipp Griewank during and after his PhD at Max Planck Institute of Meteorology from 2010-2014. The code is intended to be understandable and most subroutines, modules, functions, parameters, and global variables have doxygen compatible descriptions. In addition to the doxygen generated description, some python plotscripts are available to plot model output.</p>
+<p>The module <a class="el" href="namespacemo__grotz.html" title="The most important module of SAMSIM. ">mo_grotz</a> contains the most important subroutine grotz (Named after GRiewank nOTZ). Mo_grotz is called by <a class="el" href="SAMSIM_8f90.html">SAMSIM.f90</a>. <a class="el" href="SAMSIM_8f90.html">SAMSIM.f90</a>'s only purpose is to set the testcase number and description string. Subroutine grotz contains the time loop, as well as the initialization, and calls all other branches of the model. This model was developed from scratch by Philipp Griewank during and after his PhD at Max Planck Institute of Meteorology from 2010-2014. The code is intended to be understandable and most subroutines, modules, functions, parameters, and global variables have doxygen compatible descriptions. In addition to the doxygen generated description, some python plotscripts are available to plot model output.</p>
 <dl class="section author"><dt>Author</dt><dd>Philipp Griewank</dd></dl>
-<p>COPYRIGHT Copyright (c) 2014 Max-Planck-Institut fuer Meteorologie, Hamburg, Germany</p>
-<p>Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.</p>
-<dl class="section date"><dt>Date</dt><dd>2012-08-28 </dd></dl>
+<p>COPYRIGHT</p>
+<p>This file is part of SAMSIM.</p>
+<p>SAMSIM is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p>SAMSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
 <a class="anchor" id="a48ebd3aa83db1cb4087b1841142ec9bd"></a>
 <div class="memitem">
@@ -128,10 +130,40 @@ Functions/Subroutines</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Main subroutine of SAMSIM, a 1D thermodynamic seaice model. A semi-adaptive grid is used which is managed by <a class="el" href="namespacemo__layer__dynamics.html" title="Mo_layer_dynamics contains all subroutines for the growth and shrinking of layer thickness. ">mo_layer_dynamics</a>. To many things happen in this subroutine to describe in this description, you'll just have to go through it. </p>
+<p>Main subroutine of SAMSIM, a 1D thermodynamic seaice model. A semi-adaptive grid is used which is managed by <a class="el" href="namespacemo__layer__dynamics.html" title="Mo_layer_dynamics contains all subroutines for the growth and shrinking of layer thickness. ">mo_layer_dynamics</a>. </p>
+<p>The basic rundown of the time loop is:</p><ol type="1">
+<li>Calculate the current ice/snow state and forcing, as well as gravity drainage and flooding</li>
+<li>Apply all the fluxes, recalculate ice state</li>
+<li>Flushing and layer dynamics</li>
+</ol>
+<p>Here is the full rundown of what happens in <a class="el" href="namespacemo__grotz.html" title="The most important module of SAMSIM. ">mo_grotz</a>:</p>
+<ul>
+<li>Initialization: all fields are initialized for the given testcase, and the output is formatted</li>
+<li>Input and Forcing read in: Only if needed by the chosen testcase TIME LOOP BEGINS:<ul>
+<li>Calculate the total ice properties, total freshwater, thermal resistivity, energy, bulk salinity</li>
+<li>Determine snow and rain rates</li>
+<li>Calculate snow thermodynamics</li>
+<li>Calculate inner ice thermodynamic fluxes</li>
+<li>Calculate brine flux from expulsion</li>
+<li>Raw output written out if debug_flag is set to 2</li>
+<li>Standard output written</li>
+<li>Flooding parametrized</li>
+<li>Lowest layer mixing with underlying water</li>
+<li>Gravity drainage parametrized</li>
+<li>Various testcase specifics</li>
+<li>Calcuating and applying the heat fluxes</li>
+<li>After heatfluxes are applied new liquidus thermal equilibrium is calculated</li>
+<li>Flushing is parametrized</li>
+<li>Chemistry advection calculated</li>
+<li>Layer Dynamics TIME LOOP ENDS -Final output, files closed, and fields deallocated</li>
+</ul>
+</li>
+</ul>
 <p>IMPORTANT: To get the correct freshwater amount make sure the freshwater is calculated using a salinity value to compare against.</p>
 <p>Common errors leading to termination are: too small timestep, bad programming</p>
-<dl class="section user"><dt>Revision History</dt><dd>Basic thermodynamics and layer_dynamics for fixed boundaries seem stable, backup made. by griewank (2010-08-10) Add some more outputs, changed routine names and arguments with respect to newly introduces flags by Niels Fuchs, MPIMET (2017-03-01)</dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>Basic thermodynamics and layer_dynamics for fixed boundaries seem stable, backup made. by griewank (2010-08-10) <br />
+ Add some more outputs, changed routine names and arguments with respect to newly introduces flags by Niels Fuchs, MPIMET (2017-03-01) <br />
+ Added a bit of description with the run down of what happends by Philipp Griewank, Uni K (2018-08-08)</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">description</td><td>String to describes simulation which is output into dat_settings </td></tr>

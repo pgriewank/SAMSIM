@@ -102,10 +102,7 @@ Functions/Subroutines</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains various subroutines for flushing. </p>
 <p>Which subroutine is called is determined by flush_flag.</p>
-<dl class="section author"><dt>Author</dt><dd>Philipp Griewank</dd></dl>
-<p>COPYRIGHT Copyright (c) 2014 Max-Planck-Institut fuer Meteorologie, Hamburg, Germany</p>
-<p>Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.</p>
-<dl class="section user"><dt>Revision History</dt><dd>Sang into existence for very 1D column by Philipp Griewank, IMPRS (2010-10-20) First stable release by Philipp Griewank, IMPRS (2010-11-27) Freeboard calculation outsourced to <a class="el" href="namespacemo__functions.html" title="Module houses functions which have no home :(. ">mo_functions</a> by Philipp Griewank, IMPRS (2010-11-27) Drainage through cracks is added by Philipp Griewank, IMPRS (2011-02-24) Changes in subroutine flush3 by Niels Fuchs, MPIMET (2017-03-01) </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Philipp Griewank </dd></dl>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
 <a class="anchor" id="a7dad1a00b873a4458081b8ff9ee670d0"></a>
 <div class="memitem">
@@ -272,7 +269,10 @@ Functions/Subroutines</h2></td></tr>
 <p>Subroutine for complex flushing. </p>
 <p>Each layer splits the flushing brine into a fraction that moves downward, and a fraction that leaves the ice. A fraction of the top layer is considered melt water. This approach uses hydraulic resistivity R = mu*thick/perm . The hydraulic head is assumed to be the freeboard. The vertical resistance R_v of each layer is a determined by its viscosity * thickness divided by it's permeability. Additionally, each layer is given horizontal resistivity R_h. It is assumed that there is an average length horizontally which brine needs to flow to reach a drainage feature in the ice. We assume this length is a linear function of the ice thickness. The only tuning parameter is para_flush_horiz. The total resistance of layer i to the bottom is R.</p>
 <p>For flush_heat_flag==2 the amount of heat which leaves by dynamics from the lowest layer is added to the lowest layer to keep results comparable to the other approaches. See PhD Griewank for details</p>
-<dl class="section user"><dt>Revision History</dt><dd>Invented by Philipp Griewank, IMPRS (2012-06-15) Trying to add brine fluxes by Philipp Griewank, IMPRS (2014-02-01) Changed: Permeability calculation (only for snow_flush_flag==1), hydraulic head and output data by Niels Fuchs, MPIMET (2017-03-01)</dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>Invented by Philipp Griewank, IMPRS (2012-06-15) <br />
+ Trying to add brine fluxes by Philipp Griewank, IMPRS (2014-02-01) <br />
+ Changed: Permeability calculation (only for snow_flush_flag==1), hydraulic head and output data by Niels Fuchs, MPIMET (2017-03-01) <br />
+ </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">snow_flush_flag</td><td>Niels, 2017 add: snow_flush_flag</td></tr>

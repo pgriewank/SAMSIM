@@ -105,9 +105,11 @@ Functions/Subroutines</h2></td></tr>
 <div class="textblock"><p>Mo_layer_dynamics contains all subroutines for the growth and shrinking of layer thickness. </p>
 <p>The middle layers have flexible thickness in contrast to the lower and upper layers which have static thickness. The details are provided in the separate subroutines.</p>
 <dl class="section author"><dt>Author</dt><dd>Philipp Griewank</dd></dl>
-<p>COPYRIGHT Copyright (c) 2014 Max-Planck-Institut fuer Meteorologie, Hamburg, Germany</p>
-<p>Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty.</p>
-<dl class="section user"><dt>Revision History</dt><dd>Shrinking and growth at the bottom are started by Philipp Griewank, IMPRS (2010-07-28) add melt_thick_output by Niels Fuchs, MPIMET (2017-03-01) </dd></dl>
+<p>COPYRIGHT</p>
+<p>This file is part of SAMSIM.</p>
+<p>SAMSIM is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p>SAMSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
 <a class="anchor" id="ad21e54e67f6100807ac4c976732db8ac"></a>
 <div class="memitem">
@@ -247,7 +249,8 @@ Functions/Subroutines</h2></td></tr>
 <li>top_melt: top layer thinner than 1/2 * thick_0</li>
 </ul>
 <p>If debug_flag is set to 2 the layer values will be written into the debug output (thermoXX.dat) before and after layer dynamics with a string to identify which subroutine was called</p>
-<dl class="section user"><dt>Revision History</dt><dd>created by Philipp Griewank, IMPRS (2010-07-29) first complete and hopefully stable version by Philipp Griewank, IMPRS (2010-08-10)</dd></dl>
+<dl class="section user"><dt>Revision History</dt><dd>created by Philipp Griewank, IMPRS (2010-07-29) <br />
+ first complete and hopefully stable version by Philipp Griewank, IMPRS (2010-08-10)</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">melt_thick_output</td><td>Niels, 2017 add: melt_thick_output !OBS: only 3rd element in standard melt_thick_output vector!</td></tr>

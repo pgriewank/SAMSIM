@@ -49,7 +49,7 @@ CONTAINS
   !! Details explained in module description.
   !!
   !! @par Revision History
-  !! Formed by Philipp Griewank, IMPRS (2011-01-21)
+  !! Formed by Philipp Griewank, IMPRS (2011-01-21) \n
   !! Cleaned and commented by Philipp Griewank, (2014-04-19)
   !!
   SUBROUTINE flood (freeboard,psi_s,psi_l,S_abs,H_abs,m,T,thick,dt,Nlayer,N_active,T_bottom,S_bu_bottom,&

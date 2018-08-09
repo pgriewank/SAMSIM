@@ -18,7 +18,7 @@
 !
 !!
 !! @par Revision History
-!! Shrinking and growth at the bottom are started by Philipp Griewank, IMPRS (2010-07-28)
+!! Shrinking and growth at the bottom are started by Philipp Griewank, IMPRS (2010-07-28) \n
 !! add melt_thick_output by Niels Fuchs, MPIMET (2017-03-01)
 !!
 MODULE mo_layer_dynamics
@@ -58,7 +58,7 @@ CONTAINS
   !! If debug_flag is set to 2 the layer values will be written into the debug output (thermoXX.dat) before and after layer dynamics with a string to identify which subroutine was called 
   !!
   !! @par Revision History
-  !! created by Philipp Griewank, IMPRS (2010-07-29)
+  !! created by Philipp Griewank, IMPRS (2010-07-29) \n
   !! first complete and hopefully stable version by Philipp Griewank, IMPRS (2010-08-10)
 
   SUBROUTINE layer_dynamics (phi,N_active,Nlayer,N_bottom,N_middle,N_top,m,S_abs,H_abs,thick,thick_0,T_bottom,S_bu_bottom,&
@@ -333,7 +333,7 @@ CONTAINS
   !!
   !!
   !! @par Revision History
-  !! Started by Philipp Griewank, IMPRS (2010-07-28)
+  !! Started by Philipp Griewank, IMPRS (2010-07-28) \n
   !! Linear profiles replaced with simple upstream by Philipp Griewank, IMPRS (2010-08-25)
   !!
   SUBROUTINE bottom_melt (Nlayer,N_bottom,N_middle,N_top,m,S_abs,H_abs,thick,N_bgc,bgc_abs)
@@ -430,7 +430,7 @@ CONTAINS
   !!
   !!
   !! @par Revision History
-  !! Started by Philipp Griewank, IMPRS (2010-07-29)
+  !! Started by Philipp Griewank, IMPRS (2010-07-29) \n
   !! Linear profiles removed, replaced with simple upwind by Philipp Griewank, IMPRS (2010-08-25)
   !!
   SUBROUTINE bottom_growth (Nlayer,N_bottom,N_middle,N_top,m,S_abs,H_abs,thick,T_bottom,S_bu_bottom,N_bgc,bgc_abs,bgc_bottom)
@@ -529,9 +529,9 @@ CONTAINS
   !!
   !!
   !! @par Revision History
-  !! Started by Philipp Griewank, IMPRS (2010-07-29)
-  !! Expanded to deal with not full top layers by Philipp Griewank, IMPRS (2011-01-13)
-  !! Expansion removed and bgc added by Philipp Griewank, IMPRS (2014-02-04)
+  !! Started by Philipp Griewank, IMPRS (2010-07-29) \n
+  !! Expanded to deal with not full top layers by Philipp Griewank, IMPRS (2011-01-13) \n
+  !! Expansion removed and bgc added by Philipp Griewank, IMPRS (2014-02-04) \n
   SUBROUTINE bottom_growth_simple (N_active,Nlayer,N_top,m,S_abs,H_abs,thick,thick_0,T_bottom,S_bu_bottom,N_bgc,bgc_abs,bgc_bottom)
 
     INTEGER,                           INTENT(in)              :: Nlayer,N_top

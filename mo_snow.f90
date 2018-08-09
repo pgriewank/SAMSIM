@@ -204,7 +204,7 @@ CONTAINS
   !! The saturated lower layer is added to the top ice layer.
   !!
   !! @par Revision History
-  !! Fabricated by Philipp Griewank,  IMPRS (2010-12-14)
+  !! Fabricated by Philipp Griewank,  IMPRS (2010-12-14) \n
   !! Major redo,  water saturated bottom snow added to top ice layer by Philipp Griewank (2010-12-14) 
   SUBROUTINE snow_thermo (psi_l_snow, psi_s_snow, psi_g_snow, thick_snow, S_abs_snow, H_abs_snow, m_snow, T_snow, m, thick, H_abs)
     REAL(wp), INTENT(inout) :: psi_l_snow, psi_s_snow, psi_g_snow, T_snow
@@ -316,10 +316,12 @@ CONTAINS
 
   END SUBROUTINE snow_thermo
 
-  !> Niels, 2017 add: 
+  !> 
   !! Subroutine for calculating snow thermodynamics
+  !!
   !! most of the physics are taken from snow_thermo()
   !! based on lab observations: parts of the snow meltwater percolate directly into the ice
+  !!
   !! @par Revision History
   !! introduced by Niels Fuchs (2016-10-13)
   
@@ -447,6 +449,7 @@ CONTAINS
    end if
 
   END SUBROUTINE snow_thermo_meltwater
+  
   !>
   !! Determines conductive Heat flux for combined top ice and snow layer.
   !!
@@ -516,8 +519,9 @@ CONTAINS
   !! A limiting factor is added to increase stability of layers thinner then thick_min.
   !!
   !! @par Revision History
-  !! first version by Philipp Griewank (2010-12-15)
+  !! first version by Philipp Griewank (2010-12-15) \n
   !! Artificial limitation introduced by Philipp Griewank (2011-01-17)
+
   SUBROUTINE sub_fl_Q_0_snow(m_snow, thick_snow, T_snow, T_bound, fl_Q)
 
 

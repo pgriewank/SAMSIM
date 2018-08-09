@@ -16,9 +16,9 @@
 !!  You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <http://www.gnu.org/licenses/>.
 !!
 !! @par Revision History
-!! Started by Philipp Griewank 2010-07-08
-!! Add function for styropor cover by Niels Fuchs, MPIMET (2017-01-03)
-!! Modified salinity functions by Philipp Griewank, Uni K (2018-08-01)
+!! Started by Philipp Griewank 2010-07-08 \n
+!! Add function for styropor cover by Niels Fuchs, MPIMET (2017-01-03) \n
+!! Modified salinity functions by Philipp Griewank, Uni K (2018-08-01) \n
 
 MODULE mo_thermo_functions
 
@@ -56,8 +56,8 @@ CONTAINS
   !! If S_bu<0.001 then it is treated as pure ice.
   !!
   !! @par Revision History
-  !! first version by Philipp Griewank (2010-07-13)
-  !! Freezing temperature is calculated and introduced if T goes above 0 by Philipp Griewank (2010-07-13) 
+  !! first version by Philipp Griewank (2010-07-13) \n
+  !! Freezing temperature is calculated and introduced if T goes above 0 by Philipp Griewank (2010-07-13)  \n
   !! Added if loops to deal with saltless ice by Philipp Griewank (2010-11-27)
   SUBROUTINE getT(H,S_bu,T_in,T,phi,k)
 
@@ -151,7 +151,7 @@ CONTAINS
   !! The volume fractions are also calculated.
   !!
   !! @par Revision History
-  !! first version by Philipp Griewank, (2010-07-19)
+  !! first version by Philipp Griewank, (2010-07-19) \n
   !! changes to mass, Enthalpy and Salinity are now computed in subroutine mass_transfer by Philipp Griewank, (2010-08-24)
   !!
   SUBROUTINE Expulsion(phi,thick,m,psi_s,psi_l,psi_g,V_ex)
@@ -300,9 +300,9 @@ CONTAINS
   !! The NaCL precipitates at -22, leading to ice/salt kristall mix below -22. Ideally the whole code would be modified to take the non-continous transition at -22 but given that there is currently little interest I can't be bothered to put in the effor.
   !! 
   !! @par Revision History
-  !! First version by Philipp Griewank (2010-07-12)
-  !! Changed to go through 0 by Philipp Griewank (2014-05-07)
-  !! Added linear bit by Philipp Griewank (2018-07-22)
+  !! First version by Philipp Griewank (2010-07-12) \n
+  !! Changed to go through 0 by Philipp Griewank (2014-05-07) \n
+  !! Added linear bit by Philipp Griewank (2018-07-22) \n
 
   FUNCTION func_S_br(T,S_bu) RESULT (S_br)
     USE mo_data, ONLY:salt_flag
@@ -368,7 +368,7 @@ CONTAINS
   !! The NaCL precipitates at -22, leading to ice/salt kristall mix below -22. Ideally the whole code would be modified to take the non-continous transition at -22 but given that there is currently little interest I can't be bothered to put in the effor.
   !!
   !! @par Revision History
-  !! First version by Philipp Griewank (2010-07-13)
+  !! First version by Philipp Griewank (2010-07-13) \n
   !! Added linear bit by Philipp Griewank (2018-07-22)
 
   FUNCTION func_ddT_S_br(T) RESULT (ddT_S_br)

@@ -18,7 +18,7 @@
 !!  You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <http://www.gnu.org/licenses/>.
 !!
 !! @par Revision History
-!! Started by Philipp Griewank 2010-07-08
+!! Started by Philipp Griewank 2010-07-08 \n
 !! add parameters: heat conductivity of styropor under special sea ice lab conditions and ratio of penetrating melt water by Niels Fuchs, MPIMET (2017-03-01)
 !!
 !!

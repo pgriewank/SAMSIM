@@ -18,7 +18,7 @@
 !
 !!
 !! @par Revision History
-!! Brought from the womb by Philipp Griewank, IMPRS (<2010-10-11>)
+!! Brought from the womb by Philipp Griewank, IMPRS (2010-10-11) \n
 !! add some output values by Niels Fuchs, MPIMET (2017-03-01)
 !!
 MODULE mo_output

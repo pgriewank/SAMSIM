@@ -21,11 +21,11 @@
 !!
 !!
 !! @par Revision History
-!! Sang into existence for very 1D column by Philipp Griewank, IMPRS (2010-10-20)
-!! First stable release by Philipp Griewank, IMPRS (2010-11-27)
-!! Freeboard calculation outsourced to mo_functions by Philipp Griewank, IMPRS (2010-11-27)
-!! Drainage through cracks is added by Philipp Griewank, IMPRS (2011-02-24)
-!! Changes in subroutine flush3 by Niels Fuchs, MPIMET (2017-03-01)
+!! Sang into existence for very 1D column by Philipp Griewank, IMPRS (2010-10-20) \n
+!! First stable release by Philipp Griewank, IMPRS (2010-11-27) \n
+!! Freeboard calculation outsourced to mo_functions by Philipp Griewank, IMPRS (2010-11-27) \n
+!! Drainage through cracks is added by Philipp Griewank, IMPRS (2011-02-24) \n
+!! Changes in subroutine flush3 by Niels Fuchs, MPIMET (2017-03-01) \n
 
 MODULE mo_flush
 
@@ -62,9 +62,9 @@ CONTAINS
   !! See PhD Griewank for details
   !!
   !! @par Revision History
-  !! Invented by Philipp Griewank, IMPRS (2012-06-15)
-  !! Trying to add brine fluxes by Philipp Griewank, IMPRS (2014-02-01)
-  !! Changed: Permeability calculation (only for snow_flush_flag==1), hydraulic head and output data by Niels Fuchs, MPIMET (2017-03-01)
+  !! Invented by Philipp Griewank, IMPRS (2012-06-15) \n
+  !! Trying to add brine fluxes by Philipp Griewank, IMPRS (2014-02-01) \n
+  !! Changed: Permeability calculation (only for snow_flush_flag==1), hydraulic head and output data by Niels Fuchs, MPIMET (2017-03-01) \n
   !! 
   !!
   SUBROUTINE flush3 (freeboard,psi_l,thick,thick_0,S_abs,H_abs,m,T,dt,Nlayer,N_active,&

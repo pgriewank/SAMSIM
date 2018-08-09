@@ -77,8 +77,8 @@ CONTAINS
   !! Common errors leading to termination are: too small timestep, bad programming
   !!
   !! @par Revision History
-  !! Basic thermodynamics and layer_dynamics for fixed boundaries seem stable, backup made. by griewank (2010-08-10)
-  !! Add some more outputs, changed routine names and arguments with respect to newly introduces flags by Niels Fuchs, MPIMET (2017-03-01)
+  !! Basic thermodynamics and layer_dynamics for fixed boundaries seem stable, backup made. by griewank (2010-08-10) \n
+  !! Add some more outputs, changed routine names and arguments with respect to newly introduces flags by Niels Fuchs, MPIMET (2017-03-01) \n
   !! Added a bit of description with the run down of what happends by Philipp Griewank, Uni K (2018-08-08) 
   SUBROUTINE grotz ( testcase, description )
 

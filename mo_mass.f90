@@ -48,7 +48,7 @@ CONTAINS
   !! S_bu must be up to date!
   !!
   !! @par Revision History
-  !! Brought to life by Philipp Griewank, IMPRS (2010-08-24)
+  !! Brought to life by Philipp Griewank, IMPRS (2010-08-24) \n
   !! Modified to work with all processes by Philipp Griewank, IMPRS (2010-11-27)
   SUBROUTINE mass_transfer (Nlayer,N_active,T,H_abs,S_abs,S_bu,T_bottom,S_bu_bottom,fl_m)
 
@@ -107,7 +107,7 @@ CONTAINS
   !! This subroutine was started as a quick and dirty way to simulate the bottom freezing experiment described in Notz 2005 p. 85
   !!
   !! @par Revision History
-  !! Brought to life by Philipp Griewank, IMPRS (2010-08-24)
+  !! Brought to life by Philipp Griewank, IMPRS (2010-08-24) \n
   !! Simplified by Philipp Griewank, IMPRS (2010-11-27)
   SUBROUTINE expulsion_flux (thick,V_ex,Nlayer,N_active,psi_g,fl_m,m)
 

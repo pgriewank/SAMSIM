@@ -1,18 +1,19 @@
 !>
-!! @mainpage SAMSIM Semi-Adaptive Multi-phase Sea-Ice Model V1.0
+!! @mainpage SAMSIM Semi-Adaptive Multi-phase Sea-Ice Model V2.0
 !! 
-!! This model was developed from scratch by Philipp Griewank during and after his PhD at  Max Planck Institute of Meteorology from 2010-2014.
-!! Most elements of the model are described in my PhD thesis (A 1D model study of brine dynamics in sea ice, 2013, Hamburg) and in the publication "Insights into brine dynamics and sea ice desalination from a 1-D model study of gravity drainage" by Griewank & Notz 2013 JGR: Oceans. 
+!! 
+!! V1.0 of this model was developed from scratch by Philipp Griewank during and after his PhD at  Max Planck Institute of Meteorology from 2010-2014.
+!! Most elements of the model are described in the two papers "Insights into brine dynamics and sea ice desalination from a 1-D model study of gravity drainage" and "A 1-D modelling study of Arctic sea-ice salinity" of Griewank and Notz" which are both included in the repository. 
 !!
-!! Important changes from the version 1.0 to the previous version use for the my PhD thesis are: 
-!! - the switch to a harmonic mean permeability for gravity drainage
-!! - A few important bug fixes, which have a large affect on flushing
+!! V2.0 of SAMSIM is a minor expansion of V1.0 released in 2018. Most work was done by Niels Fuchs as part of his Master's thesis "The impact of snow on sea-ice salinity" at the Max Planck Institute of Meteorology from 2016-2017 (thesis also in repository). The biggest change is an improvement of the flushing parametrization, as well as the settings and forcings for a large amount of laboratory experiments Niels conducted, making it possible to run lab testcases with snow. 
+!! 
+!!
 !!  
 !! SAMSIM.f90 is the root program of the SAMSIM, the 1D thermodynamic Semi-Adaptive Multi-phase Sea-Ice Model.
-!! The code is intended to be understandable and subroutines, modules, functions, parameters, and global variables all have doxygen compatible descriptions. 
 !! However, in SAMSIM.f90 only the testcase and description thread are specified, which are then passed on to mo_grotz, which is where most of the actual work is done, including timestepping. 
+!! The code is intended to be understandable and subroutines, modules, functions, parameters, and global variables all have (more or less) doxygen compatible descriptions. 
 !!
-!! WARNING: SAMSIM was developed and used for scientific purposes. It surely contains at least some undetected bugs, can easily be crashed by using non-logical input settings, and some of the descriptions and comments may be outdated.  Always check the plausibility of the model results!
+!! WARNING: SAMSIM was developed and was/is used for scientific purposes. It likely contains a few undetected bugs, can easily be crashed by using non-logical input settings, and some of the descriptions and comments may be outdated.  Always check the plausibility of the model results!
 !!
 !! Getting started:
 !! - A number of testcases are implemented in SAMSIM. 
@@ -32,7 +33,7 @@
 !! - Follow the directions written in the plotscripts to plot the output.
 !!
 !! Running testcase 4.
-!! In contrast to testcase 1-3, testcase four requires input files. 
+!! - In contrast to testcase 1-3, testcase four requires input files. 
 !! Input data for testcase is provided in the input folder. 
 !! Choose one of the subfolders from  input/ERA-interim/, copy the *.input files into the folder with the code, and run the executable .samsim.x .
 !!
@@ -42,7 +43,7 @@
 !! - mo_init.f90
 !!
 !! Biogeochemical tracers can be activated with  bgc_flag=2. 
-!! - Warning! This feature is still relatively new, and has not been standardized yet. 
+!! - Warning! This feature was implemented at the end of my PhD and not used much. As a result it has not been thouroughly tested. 
 !! - The model will track Nbgc number of individual tracer. 
 !! - Especially if you are interested in dissolved gases, you should first make yourself familiar with the bgc_advection subroutine in mo_mass.f90. 
 !!
@@ -53,9 +54,11 @@
 !! - Check dat_settings to keep track of runs, and use the description variable to keep track of experiments.
 !! - Contact me :)
 !! 
+!! 
+!!
 !! @author Philipp Griewank
 !!
-!!
+!! 
 !!
 !!  COPYRIGHT
 !!
@@ -68,9 +71,10 @@
 !!  You should have received a copy of the GNU General Public License along with SAMSIM. If not, see <http://www.gnu.org/licenses/>.
 !!
 !! @par Revision History
-!! Started by Philipp Griewank 2014-05-05
-!! nothing changed here by Niels Fuchs, MPIMET (2017-03-01)
-!! License changed by Philipp Griewank 2018-05-22
+!! Started by Philipp Griewank 2014-05-05 \n
+!! nothing changed here by Niels Fuchs, MPIMET (2017-03-01) \n
+!! License changed by Philipp Griewank 2018-05-22 \n
+!! V2.0 finalized by Philipp Griewank 2018-08-09 \n
 !!
 PROGRAM SAMSIM
   USE mo_grotz 
@@ -84,8 +88,8 @@ PROGRAM SAMSIM
   !##########################################################################################
   !Initialization
   !##########################################################################################
-  testcase    = 1                  !sets the testcase
-  description = 'ttest_v2'  !is written to dat_settings 
+  testcase    = 4                  !sets the testcase
+  description = 'checking new salinity functions'  !is written to dat_settings 
   !##########################################################################################
     
   PRINT*,'SAMSIM is getting ready'

@@ -63,7 +63,7 @@ CONTAINS
   !!
   !!
   !! @par Revision History
-  !! First version by Philipp Griewank (2014-04-02)
+  !! First version by Philipp Griewank (2014-04-02) \n
   !! Second version by Niels Fuchs (2017-02-02)
 
   Subroutine  sub_heat_fluxes()

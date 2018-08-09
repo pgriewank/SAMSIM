@@ -19,7 +19,7 @@
 !!
 !!
 !! @par Revision History
-!! Initialized by Philipp Griewank, IMPRS (2010-07-14)
+!! Initialized by Philipp Griewank, IMPRS (2010-07-14) \n
 !! Add several variables by Niels Fuchs, MPIMET (2017-03-01)
 
 !!

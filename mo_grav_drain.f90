@@ -65,10 +65,10 @@ CONTAINS
   !! If grav_heat_flag is set to 2 the amount of heat transported out of the ice will be compensated in the lowest layer
   !!
   !! @par Revision History
-  !! created by Philipp Griewank, IMPRS (2010-08-27)
-  !! Completely revised to assume brine channels by Philipp Griewank , IMPRS (2010-11-05)
-  !! Mass_transfer is used to advect H and S by Philipp Griewank, IMPRS (2010-11-05)
-  !! Added condition S_br(k)>S_br(k+1) by Philipp Griewank. IMPRS (2011-04-29)
+  !! created by Philipp Griewank, IMPRS (2010-08-27) \n
+  !! Completely revised to assume brine channels by Philipp Griewank , IMPRS (2010-11-05) \n
+  !! Mass_transfer is used to advect H and S by Philipp Griewank, IMPRS (2010-11-05) \n
+  !! Added condition S_br(k)>S_br(k+1) by Philipp Griewank. IMPRS (2011-04-29) \n
   !! Added harmonic mean for permeability by Philipp Griewank (2014-01-05)
 
   SUBROUTINE fl_grav_drain (S_br,S_bu,psi_l,psi_s,psi_g,thick,S_abs,H_abs,T,m,dt,Nlayer,N_active,ray, &

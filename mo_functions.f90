@@ -71,10 +71,10 @@ CONTAINS
   !! If snow pushes the ice underwater the freeboard becomes negative
   !!
   !! @par Revision History
-  !! Built to spill by Philipp Griewank (2011-01-07)
-  !! Negative freeboard included by Philipp Griewank (2011-01-09)
-  !! Patched bug by Philipp Griewank (2011-03-10)
-  !! Add freeboard_snow_flag calculation of snow mass, check the code for further explanations by Niels Fuchs, MPIMET (2017-03-91)
+  !! Built to spill by Philipp Griewank (2011-01-07) \n
+  !! Negative freeboard included by Philipp Griewank (2011-01-09) \n
+  !! Patched bug by Philipp Griewank (2011-03-10) \n
+  !! Add freeboard_snow_flag calculation of snow mass, check the code for further explanations by Niels Fuchs, MPIMET (2017-03-91) \n
   
   FUNCTION func_freeboard(N_active,Nlayer,psi_s,psi_g,m,thick,m_snow,freeboard_snow_flag) RESULT (freeboard)
 

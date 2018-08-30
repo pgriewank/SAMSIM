@@ -21,7 +21,7 @@ import matplotlib
 #Contours are interpolated from the middle of each layer. This is most visible in thick layers, and in the snow layer where the contour lines only extend to the the middle. 
 
 #Settings 
-dx           = 1. 
+dx           = 0.5 
 timeunit     = '[days]'
 outputfile   = 'pic_TPhiS'
 outputformat = 'png' #e.g. png, jpg, pdf
@@ -194,7 +194,7 @@ fig1.subplots_adjust(bottom=0.08)
 #######################################################
 #Plotting temperature
 #######################################################
-ax1 = fig1.add_subplot(311, axisbg='grey')
+ax1 = fig1.add_subplot(311)
 zmin=T.min()
 zmax=0
 #plt.pcolor(Xgrid,depth,T,cmap='Blues_r',vmin=zmin,vmax=zmax)
@@ -208,12 +208,13 @@ plt.clabel(CS1, fontsize=9, inline=1,fmt='%1.0f')
 plt.plot(Xaxis[:],freeboard[:],'k--')
 plt.ylabel(r'depth [m]')
 ax1.set_title('Temperature, liquid volume fraction, and bulk salinity')
+ax1.set_facecolor((0.5,0.5,0.5))
 ax1.xaxis.set_ticklabels([])
 
 #######################################################
 #Plotting liquid fraction
 #######################################################
-ax2 = fig1.add_subplot(312,axisbg='grey')
+ax2 = fig1.add_subplot(312)
 fsize=10.
 zmin=0.
 zmax=1.
@@ -229,12 +230,13 @@ plt.clabel(CS2, fontsize=9, inline=1,fmt='%1.1f')
 plt.plot(Xaxis[:],freeboard[:],'k--')
 plt.ylabel(r'depth [m]')
 ax2.xaxis.set_ticklabels([])
+ax2.set_facecolor((0.5,0.5,0.5))
 
 
 #######################################################
 #Plotting salinity
 #######################################################
-ax3 = fig1.add_subplot(313,axisbg='grey')
+ax3 = fig1.add_subplot(313)
 fsize=10.
 zmin=0.
 zmax=S.max()
@@ -249,6 +251,7 @@ plt.clabel(CS3, fontsize=9, inline=1,fmt='%2.0f')
 plt.plot(Xaxis[:],freeboard[:],'k--')
 plt.ylabel(r'depth [m]')
 plt.xlabel(r'time '+timeunit)
+ax3.set_facecolor((0.5,0.5,0.5))
 
 
 #Saving and exporting

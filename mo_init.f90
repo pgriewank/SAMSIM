@@ -100,7 +100,7 @@ CONTAINS
     !________________________snow______________________
     precip_flag     = 0
     freeboard_snow_flag = 0    !< Niels, 2017
-    snow_flush_flag = 0    !< Niels, 2017
+    snow_flush_flag = 1    !< Niels, 2017
     snow_precip_flag = 1   !< Niels, 2017
     !________________________debugging_____________________
     debug_flag      = 1   !set to 2 for output of all ice layers each timestep
@@ -1149,7 +1149,7 @@ CONTAINS
        atmoflux_flag  = 2
        precip_flag    = 1
        boundflux_flag = 2
-       snow_flush_flag = 0
+       snow_flush_flag = 1
        flush_heat_flag = 2
        snow_precip_flag = 1
 

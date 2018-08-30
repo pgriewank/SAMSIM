@@ -371,12 +371,12 @@ CONTAINS
        IF (k<10) THEN
           WRITE(output_string,'(A18,I1,A7)')'./output/dat_bgc0',k,'.bu.dat'
           OPEN(2*k+400,file=TRIM(ADJUSTL(output_string)),STATUS='replace',Recl=12288)
-          WRITE(output_string,'(A18,I1,A7)')'./output/dat_bgc0',k,'.br.txt'
+          WRITE(output_string,'(A18,I1,A7)')'./output/dat_bgc0',k,'.br.dat'
           OPEN(2*k+401,file=TRIM(ADJUSTL(output_string)),STATUS='replace',Recl=12288)
        ELSE 
-          WRITE(output_string,'(A17,I2,A7)')'./output/dat_bgc',k,'.bu.txt'
+          WRITE(output_string,'(A17,I2,A7)')'./output/dat_bgc',k,'.bu.dat'
           OPEN(2*k+400,file=TRIM(ADJUSTL(output_string)),STATUS='replace',Recl=12288)
-          WRITE(output_string,'(A17,I2,A7)')'./output/dat_bgc',k,'.br.txt'
+          WRITE(output_string,'(A17,I2,A7)')'./output/dat_bgc',k,'.br.dat'
           OPEN(2*k+401,file=TRIM(ADJUSTL(output_string)),STATUS='replace',Recl=12288)
        END IF
     END DO

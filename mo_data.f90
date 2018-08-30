@@ -73,8 +73,8 @@ MODULE mo_data
   INTEGER                               :: i_time_out        !<  Number of timesteps between each output
   INTEGER                               :: n_time_out        !<  Counts number of timesteps between output
   CHARACTER*12000                       :: format_T,format_psi,format_thick,format_snow,format_integer,format_T2m_top,format_bgc,&
-                                           &format_melt  !< Format strings for output. Niels(2017) add: melt output
-  CHARACTER*12000                       :: format_perm  !< Niels(2017) add: permeability output
+                                           &format_melt      !< Format strings for output. Niels(2017) add: melt output
+  CHARACTER*12000                       :: format_perm       !< Niels(2017) add: permeability output
 
   !----Boundary conditions
   REAL(wp)                              :: T_bottom          !<  Temperature of water beneath the ice [C]
@@ -126,50 +126,50 @@ MODULE mo_data
   !----Flushing
   REAL(wp)                              :: melt_thick        !<  thickness of fully liquid part of top layer [m] 
   REAL(wp)                              :: melt_thick_snow, melt_thick_snow_old   !< Niels(2017) add: thickness of excess fully liquid part from snow_melt_processes [m]
-  REAL(wp), DIMENSION(3)                :: melt_thick_output   !< Niels, 2017 add: output field of surface liquid meltwater sizes
+  REAL(wp), DIMENSION(3)                :: melt_thick_output !< Niels, 2017 add: output field of surface liquid meltwater sizes
 
   !----Lab fluxes
   REAL(wp)                              :: alpha_flux_instable      !<  Proportionality constant which determines energy flux by the temperature difference T_top>T2m [W/C]
   REAL(wp)                              :: alpha_flux_stable        !<  Proportionality constant which determines energy flux by the temperature difference T_top<T2m [W/C]
 
   !----Flags
-  INTEGER :: atmoflux_flag     !< 1: Use mean climatology of Notz, 2: Use imported reanalysis data, 3: use fixed values defined in mo_init 
-  INTEGER :: grav_flag         !< 1: no gravity drainage,  2: Gravity drainage, 3: Simple Drainage
-  INTEGER :: prescribe_flag    !< 1: nothing happens, 2: prescribed Salinity profile is prescribed at each timestep (does not disable brine dynamics, just overwrites the salinity!)
-  INTEGER :: grav_heat_flag    !< 1: nothing happens, 2: compensates heatfluxes in grav_flag = 2
-  INTEGER :: flush_heat_flag   !< 1: nothing happens, 2: compensates heatfluxes in flush_flag = 5
-  INTEGER :: turb_flag         !< 1: No bottom turbulence, 2: Bottom mixing
-  INTEGER :: salt_flag         !< 1: Sea salt, 2: NaCL 
-  INTEGER :: boundflux_flag    !< 1: top and bottom cooling plate, 2:top Notz fluxes, bottom cooling plate 3: top flux=a*(T-T_s)
-  INTEGER :: flush_flag        !< 1: no flushing, 4:meltwater is removed artificially, 5:vert and horiz flushing, 6: simplified
-  INTEGER :: flood_flag        !< 1: no flooding, 2:normal flooding, 3:simple flooding
-  INTEGER :: bottom_flag       !< 1: nothing changes, 2: deactivates all bottom layer dynamics, useful for some debugging and idealized tests
-  INTEGER :: debug_flag        !< 1: no raw layer output, 2: each layer  is output at every timestep (warning, file size can be very large)
-  INTEGER :: precip_flag       !< 0: solid and liquid precipitation, 1:phase determined by T2m 
-  INTEGER :: harmonic_flag     !< 1: minimal permeability is used to calculate Rayleigh number, 2:harmonic mean is used for Rayleigh number 
-  INTEGER :: tank_flag         !< 1: nothing, 2: S_bu_bottom and bgc_bottom are calculated as if the experiment is conducted in a tank
-  INTEGER :: albedo_flag       !< 1: simple albedo, 2: normal albedo, see func_albedo for details
-  INTEGER :: lab_snow_flag     !< Niels, 2017 add:  0: lab setup without snow covers, 1: lab setup include snow influence on heat fluxes
+  INTEGER :: atmoflux_flag       !< 1: Use mean climatology of Notz, 2: Use imported reanalysis data, 3: use fixed values defined in mo_init 
+  INTEGER :: grav_flag           !< 1: no gravity drainage,  2: Gravity drainage, 3: Simple Drainage
+  INTEGER :: prescribe_flag      !< 1: nothing happens, 2: prescribed Salinity profile is prescribed at each timestep (does not disable brine dynamics, just overwrites the salinity!)
+  INTEGER :: grav_heat_flag      !< 1: nothing happens, 2: compensates heatfluxes in grav_flag = 2
+  INTEGER :: flush_heat_flag     !< 1: nothing happens, 2: compensates heatfluxes in flush_flag = 5
+  INTEGER :: turb_flag           !< 1: No bottom turbulence, 2: Bottom mixing
+  INTEGER :: salt_flag           !< 1: Sea salt, 2: NaCL 
+  INTEGER :: boundflux_flag      !< 1: top and bottom cooling plate, 2:top Notz fluxes, bottom cooling plate 3: top flux=a*(T-T_s)
+  INTEGER :: flush_flag          !< 1: no flushing, 4:meltwater is removed artificially, 5:vert and horiz flushing, 6: simplified
+  INTEGER :: flood_flag          !< 1: no flooding, 2:normal flooding, 3:simple flooding
+  INTEGER :: bottom_flag         !< 1: nothing changes, 2: deactivates all bottom layer dynamics, useful for some debugging and idealized tests
+  INTEGER :: debug_flag          !< 1: no raw layer output, 2: each layer  is output at every timestep (warning, file size can be very large)
+  INTEGER :: precip_flag         !< 0: solid and liquid precipitation, 1:phase determined by T2m 
+  INTEGER :: harmonic_flag       !< 1: minimal permeability is used to calculate Rayleigh number, 2:harmonic mean is used for Rayleigh number 
+  INTEGER :: tank_flag           !< 1: nothing, 2: S_bu_bottom and bgc_bottom are calculated as if the experiment is conducted in a tank
+  INTEGER :: albedo_flag         !< 1: simple albedo, 2: normal albedo, see func_albedo for details
+  INTEGER :: lab_snow_flag       !< Niels, 2017 add:  0: lab setup without snow covers, 1: lab setup include snow influence on heat fluxes
   INTEGER :: freeboard_snow_flag !< Niels, 2017 add:  0: respect the mass of snow in the freeboard calculation, 1: don't
-  INTEGER :: snow_flush_flag   !< Niels, 2017 add:  0: all meltwater from snow forms slush, 1: meltwater partly leads to flushing, ratio defined by "k_snow_flush"
-  INTEGER :: snow_precip_flag   !< Niels, 2017 add:  0: all precipitation is set to zero, 1: physical behaviour
+  INTEGER :: snow_flush_flag     !< Niels, 2017 add:  0: all meltwater from snow forms slush, 1: meltwater partly leads to flushing, ratio defined by "k_snow_flush"
+  INTEGER :: snow_precip_flag    !< Niels, 2017 add:  0: all precipitation is set to zero, 1: physical behaviour
   
   !##########################################################################################
   !Variables used to import data
   !##########################################################################################
-  INTEGER                               :: Length_Input  !< Sets the input length for atmoflux_flag==2, common value of 13169
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: Tinput       !< Niels, 2017 add: used to read in top temperature for field experiment tests, dimension needs to be set in the code
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: precipinput  !< Niels, 2017 add: used to read in precipation for field experiment tests, dimension needs to be set in the code
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: ocean_T_input !< Niels, 2017 add: used to read in ocean temperature for field experiment tests, dimension needs to be set in the code
+  INTEGER                               :: Length_Input     !< Sets the input length for atmoflux_flag==2, common value of 13169
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: Tinput           !< Niels, 2017 add: used to read in top temperature for field experiment tests, dimension needs to be set in the code
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: precipinput      !< Niels, 2017 add: used to read in precipation for field experiment tests, dimension needs to be set in the code
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: ocean_T_input    !< Niels, 2017 add: used to read in ocean temperature for field experiment tests, dimension needs to be set in the code
   REAL(wp), DIMENSION(:), ALLOCATABLE   :: ocean_flux_input !< Niels, 2017 add: used to read in oceanic heat flux for field experiment tests, dimension needs to be set in the code
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: styropor_input  !< Niels, 2017 add: if styropor is used in the lab on top of the ice to simulate snow heat fluxes
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: Ttop_input    !< Niels, 2017 add: used for testcase 111, comparison with greenland harp data, uppermost harp temperature is seen as Ttop
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: fl_sw_input   !< Used to read in sw fluxes from ERA for atmoflux_flag==2
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: fl_lw_input   !< Used to read in lw fluxes from ERA for atmoflux_flag==2
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: T2m_input     !< Used to read in 2Tm from ERA       for atmoflux_flag==2
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: precip_input  !< Used to read in precipitation from ERA for atmoflux_flag==2
-  REAL(wp), DIMENSION(:), ALLOCATABLE   :: time_input    !< Used to read in time from ERA for atmoflux_flag==2
-  INTEGER                               :: time_counter  !< Keeps track of input data
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: styropor_input   !< Niels, 2017 add: if styropor is used in the lab on top of the ice to simulate snow heat fluxes
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: Ttop_input       !< Niels, 2017 add: used for testcase 111, comparison with greenland harp data, uppermost harp temperature is seen as Ttop
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: fl_sw_input      !< Used to read in sw fluxes from ERA for atmoflux_flag==2
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: fl_lw_input      !< Used to read in lw fluxes from ERA for atmoflux_flag==2
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: T2m_input        !< Used to read in 2Tm from ERA       for atmoflux_flag==2
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: precip_input     !< Used to read in precipitation from ERA for atmoflux_flag==2
+  REAL(wp), DIMENSION(:), ALLOCATABLE   :: time_input       !< Used to read in time from ERA for atmoflux_flag==2
+  INTEGER                               :: time_counter     !< Keeps track of input data
   !REAL(wp), DIMENSION(:), ALLOCATABLE   :: perm    !< permeability values
 
 
@@ -199,8 +199,8 @@ MODULE mo_data
   !Misc
   !#######
   CHARACTER*3                           :: flush_question='No!' !< Niels, 2017 add: used to indicate in stdout wether flushing occurs at this moment or not
-  REAL(wp)                              :: melt_err=0._wp  !< Niels, 2017 add: used to check how much meltwater vanishes in flushing routine
-  INTEGER                               :: length_input_lab !< Niels, 2017 add: used to allocate lab testcase input arrays in mo_init, set value in testcases
+  REAL(wp)                              :: melt_err=0._wp       !< Niels, 2017 add: used to check how much meltwater vanishes in flushing routine
+  INTEGER                               :: length_input_lab     !< Niels, 2017 add: used to allocate lab testcase input arrays in mo_init, set value in testcases
   
 END MODULE mo_data
 

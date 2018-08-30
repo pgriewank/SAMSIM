@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>V1.0 of this model was developed from scratch by Philipp Griewank during and after his PhD at Max Planck Institute of Meteorology from 2010-2014. Most elements of the model are described in the two papers "Insights into brine dynamics and sea ice desalination from a 1-D model study of gravity drainage" and "A 1-D modelling study of Arctic sea-ice salinity" of Griewank and Notz" which are both included in the repository.  V2.0 of SAMSIM is a minor expansion of V1.0 released in 2018. Most work was done by Niels Fuchs as part of his Master's thesis "The impact of snow on sea-ice salinity" at the Max Planck Institute of Meteorology from 2016-2017 (thesis also in repository). The biggest change is an improvement of the flushing parametrization, as well as the settings and forcings for a large amount of laboratory experiments Niels conducted, making it possible to run lab testcases with snow.</p>
-<p><a class="el" href="SAMSIM_8f90.html">SAMSIM.f90</a> is the root program of the SAMSIM, the 1D thermodynamic Semi-Adaptive Multi-phase Sea-Ice Model. However, in <a class="el" href="SAMSIM_8f90.html">SAMSIM.f90</a> only the testcase and description thread are specified, which are then passed on to <a class="el" href="namespacemo__grotz.html" title="The most important module of SAMSIM. ">mo_grotz</a>, which is where most of the actual work is done, including timestepping. The code is intended to be understandable and subroutines, modules, functions, parameters, and global variables all have (more or less) doxygen compatible descriptions.</p>
+<p><a class="el" href="SAMSIM_8f90.html">SAMSIM.f90</a> is the root program of the SAMSIM, the 1D thermodynamic Semi-Adaptive Multi-phase Sea-Ice Model. However, in <a class="el" href="SAMSIM_8f90.html">SAMSIM.f90</a> only the testcase and description thread are specified, which are then passed on to <a class="el" href="namespacemo__grotz.html" title="The most important module of SAMSIM. ">mo_grotz</a>, which is where most of the actual work is done, including timestepping. The code is intended to be understandable and subroutines, modules, functions, parameters, and global variables all have (more or less) doxygen compatible descriptions. Both a pdf and html documentation generated via doxygen are included under documentation.</p>
 <p>WARNING: SAMSIM was developed and was/is used for scientific purposes. It likely contains a few undetected bugs, can easily be crashed by using non-logical input settings, and some of the descriptions and comments may be outdated. Always check the plausibility of the model results!</p>
 <p>Getting started:</p><ul>
 <li>A number of testcases are implemented in SAMSIM. Testcases 1, 2, 3, and 4 are intended as standard testcases which should give a first time user a feel for the model capabilities and serve as a basis to set up custom testcases. To familiarize yourself with the model I suggest running testcases 1-3 and plotting the output with the python plotting scripts provided. The details of each testcase are commented in <a class="el" href="mo__init_8f90.html">mo_init.f90</a>, and each plot script begins with a list of steps required.</li>
@@ -115,6 +115,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Check dat_settings to keep track of runs, and use the description variable to keep track of experiments.</li>
 <li>Contact me :)</li>
 </ul>
+<p>Contacts:</p><ul>
+<li>Philipp Griewank: <a href="#" onclick="location.href='mai'+'lto:'+'phi'+'li'+'pp.'+'gr'+'iew'+'an'+'k@u'+'ni'+'-ko'+'el'+'n.d'+'e'; return false;">phili<span style="display: none;">.nosp@m.</span>pp.g<span style="display: none;">.nosp@m.</span>riewa<span style="display: none;">.nosp@m.</span>nk@u<span style="display: none;">.nosp@m.</span>ni-ko<span style="display: none;">.nosp@m.</span>eln.<span style="display: none;">.nosp@m.</span>de</a></li>
+<li>Niels Fuchs: <a href="#" onclick="location.href='mai'+'lto:'+'nie'+'ls'+'.fu'+'ch'+'s@a'+'wi'+'.de'; return false;">niels<span style="display: none;">.nosp@m.</span>.fuc<span style="display: none;">.nosp@m.</span>hs@aw<span style="display: none;">.nosp@m.</span>i.de</a></li>
+<li>Dirk Notz: <a href="#" onclick="location.href='mai'+'lto:'+'dir'+'k.'+'not'+'z@'+'mpi'+'me'+'t.m'+'pg'+'.de'; return false;">dirk.<span style="display: none;">.nosp@m.</span>notz<span style="display: none;">.nosp@m.</span>@mpim<span style="display: none;">.nosp@m.</span>et.m<span style="display: none;">.nosp@m.</span>pg.de</a></li>
+</ul>
 <dl class="section author"><dt>Author</dt><dd>Philipp Griewank</dd></dl>
 <p>COPYRIGHT</p>
 <p>This file is part of SAMSIM.</p>
@@ -124,7 +129,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dl class="section user"><dt>Revision History</dt><dd>Started by Philipp Griewank 2014-05-05 <br />
  nothing changed here by Niels Fuchs, MPIMET (2017-03-01) <br />
  License changed by Philipp Griewank 2018-05-22 <br />
- V2.0 finalized by Philipp Griewank 2018-08-09 <br />
+ V2.0 finalized by Philipp Griewank 2018-08-29 <br />
 </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->

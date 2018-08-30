@@ -55,7 +55,10 @@
 !! - Check dat_settings to keep track of runs, and use the description variable to keep track of experiments.
 !! - Contact me :)
 !! 
-!! 
+!! Contacts: 
+!! -Philipp Griewank: philipp.griewank@uni-koeln.de
+!! -Niels Fuchs: niels.fuchs@awi.de 
+!! -Dirk Notz: dirk.notz@mpimet.mpg.de
 !!
 !! @author Philipp Griewank
 !!
@@ -75,7 +78,7 @@
 !! Started by Philipp Griewank 2014-05-05 \n
 !! nothing changed here by Niels Fuchs, MPIMET (2017-03-01) \n
 !! License changed by Philipp Griewank 2018-05-22 \n
-!! V2.0 finalized by Philipp Griewank 2018-08-09 \n
+!! V2.0 finalized by Philipp Griewank 2018-08-29 \n
 !!
 PROGRAM SAMSIM
   USE mo_grotz 
@@ -89,8 +92,8 @@ PROGRAM SAMSIM
   !##########################################################################################
   !Initialization
   !##########################################################################################
-  testcase    = 4                  !sets the testcase
-  description = 'checking new salinity functions'  !is written to dat_settings 
+  testcase    = 1                  !sets the testcase
+  description = 'getting started'  !is written to dat_settings 
   !##########################################################################################
     
   PRINT*,'SAMSIM is getting ready'

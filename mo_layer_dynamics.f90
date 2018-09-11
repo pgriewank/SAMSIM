@@ -312,8 +312,10 @@ CONTAINS
        END DO
     END IF
 
-
-    IF(thick_0*(N_active+0.5_wp)<=SUM(thick) .AND. N_active<Nlayer) THEN
+ 
+    !Checks if current thick vector is possible for current N_active and thick_0
+    !Uses 0.501 instead of 0.500 to give a bit of wriggle room for numerical noise
+    IF(thick_0*(N_active+0.501_wp)<=SUM(thick) .AND. N_active<Nlayer) THEN
        PRINT*,'wtf layer issue',thick_0,SUM(thick),N_active,Nlayer
        STOP 7889
     END IF

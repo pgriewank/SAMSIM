@@ -292,7 +292,7 @@ CONTAINS
   !! Subroutine computes one S_br for one given T in Celsius by third-order polynomial.
   !! NaCl solutions and seawater produce slight variations. Which solution is used is determined by salt_flag.  
   !! S_br = c1+c2*T+c3*T^2+c4*T^3
-  !! Based on Notz 2005 p. 36
+  !! Was originally based on that of Notz 2005 p. 36, but was switched to the POLY3 of Vancoppenolle 2019 et al, Thermodynamics of Sea ICe Phase compositon Revisited
   !! 
   !! For T below -20 we simply use a linear extension based on "Composition of sea ice and its tensile strength".
   !! The actual salinity function is much more complicated and depends on the salt composition, but the linear fit is far better than using the polynomial fit.
@@ -303,6 +303,7 @@ CONTAINS
   !! First version by Philipp Griewank (2010-07-12) \n
   !! Changed to go through 0 by Philipp Griewank (2014-05-07) \n
   !! Added linear bit by Philipp Griewank (2018-07-22) \n
+  !! Changed constants to those of POLY3 Vancoppenolle 2019 by Philipp Griewank (2019-02-15) \n
 
   FUNCTION func_S_br(T,S_bu) RESULT (S_br)
     USE mo_data, ONLY:salt_flag
@@ -317,13 +318,16 @@ CONTAINS
 
 
 
-    T_crit = -20._wp
     IF (salt_flag==1) THEN
        !Saltwater coefficients
        c1  =  0.0_wp
-       c2  =  -21.4_wp
-       c3  =  -0.886_wp
-       c4  =  -0.0170_wp
+       c2  =  -18.7_wp
+       c3  =  -0.519_wp
+       c4  =  -0.00535_wp
+       !Old values of Dirk
+       !c2  =  -21.4_wp
+       !c3  =  -0.886_wp
+       !c4  =  -0.0170_wp
     ELSE IF (salt_flag==2) THEN
        !NaCl coefficients
        c1  =  0.0_wp
@@ -335,13 +339,15 @@ CONTAINS
 
     S_br = c1 + c2*T + c3*T**2._wp + c4*T**3._wp
     
-    IF (T.lt.T_crit) THEN
+    !No longer used linear approximation
+    !T_crit = -20._wp
+    !IF (T.lt.T_crit) THEN
 
-        S_0     = c1 + c2*T_crit + c3*T_crit**2._wp + c4*T_crit**3._wp
-        ddT_S_0 = c2 + 2._wp*c3*T_crit + 3._wp*c4*T_crit**2._wp
-        S_br    = S_0+ddT_S_0*(T-T_crit)
+    !    S_0     = c1 + c2*T_crit + c3*T_crit**2._wp + c4*T_crit**3._wp
+    !    ddT_S_0 = c2 + 2._wp*c3*T_crit + 3._wp*c4*T_crit**2._wp
+    !    S_br    = S_0+ddT_S_0*(T-T_crit)
 
-    END IF
+    !END IF
 
 
     IF(PRESENT(S_bu))THEN

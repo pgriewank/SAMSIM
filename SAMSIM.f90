@@ -56,10 +56,10 @@
 !! - Contact me :)
 !! 
 !! Contacts: 
-!! -Philipp Griewank: philipp.griewank@uni-koeln.de
-!! -Niels Fuchs: niels.fuchs@awi.de 
-!! -Dirk Notz: dirk.notz@mpimet.mpg.de
-!!
+!! - Philipp Griewank: philipp.griewank@uni-koeln.de
+!! - Niels Fuchs: niels.fuchs@awi.de 
+!! - Dirk Notz: dirk.notz@mpimet.mpg.de
+!! - Luise Zeigermann: zeigermannluise@gmail.com, when related to her Master Thesis
 !! @author Philipp Griewank
 !!
 !! 
@@ -93,7 +93,7 @@ PROGRAM SAMSIM
   !Initialization
   !##########################################################################################
   testcase    = 1                  !sets the testcase
-  description = 'getting started'  !is written to dat_settings 
+  description = 'default testcase 1'  !is written to dat_settings 
   !##########################################################################################
     
   PRINT*,'SAMSIM is getting ready'

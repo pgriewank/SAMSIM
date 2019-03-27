@@ -286,13 +286,13 @@ CONTAINS
        DO k=1,Nlayer
           IF (k<10) THEN
              WRITE(output_string,'(A18,I1,A4)')'./output/thermo00',k,'.txt'
-             OPEN(k+200,file=TRIM(output_string),STATUS='replace')
+             OPEN(k+200,file=TRIM(ADJUSTL(output_string)),STATUS='replace',Recl=12288)
           ELSE IF (k<100) THEN
              WRITE(output_string,'(A17,I2,A4)')'./output/thermo0',k,'.txt'
-             OPEN(k+200,file=TRIM(output_string),STATUS='replace')
+             OPEN(k+200,file=TRIM(ADJUSTL(output_string)),STATUS='replace',Recl=12288)
           ELSE
              WRITE(output_string,'(A16,I3,A4)')'./output/thermo',k,'.txt'
-             OPEN(k+200,file=TRIM(output_string),STATUS='replace')
+             OPEN(k+200,file=TRIM(ADJUSTL(output_string)),STATUS='replace',Recl=12288)
           END IF
        END DO
     END IF

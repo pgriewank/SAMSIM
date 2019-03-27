@@ -104,7 +104,7 @@ MODULE mo_parameters
 
 
   !Limitations
-  REAL(wp) :: max_flux_plate = 50.0 !< Maximal heating rate of a heating plate
+  REAL(wp) :: max_flux_plate = 10000.0 !< Maximal heating rate of a heating plate, set so high so that it doesn't interfere with testcase 1.
 
   !Snow melt process
   REAL(wp) :: k_snow_flush = 0.75_wp !< Niels, 2017 add:  Percentage of excess liquid water content in the snow that is used for flushing instead of forming slush

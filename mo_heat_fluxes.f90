@@ -74,15 +74,16 @@ CONTAINS
     IMPLICIT NONE
     REAL(wp) ::T_old, k_1, T_b,emi, pen, temp, temp1, temp2
 
-
        IF (boundflux_flag==1) THEN
-          T_freeze = func_T_freeze(S_abs(1)/m(1),salt_flag)
-          IF (func_S_br(T_top)>S_abs(1)/m(1)) THEN
-             CALL sub_fl_Q_0(psi_s(1),psi_l(1),psi_g(1),thick(1),T(1),T_top,-1,fl_Q(1))
-          else
-             fl_Q(1)   = -max_flux_plate
-          end if
-       end if
+          !Used for cooling plates, or experiments where the top temperature is prescribed from a measurement. 
+          !Calculates the heat flux using sub_fl_Q_0, then restricts calculated heat flux to max_flux_plate which represents the technical limitation of the cooling plate.  
+          
+          CALL sub_fl_Q_0(psi_s(1),psi_l(1),psi_g(1),thick(1),T(1),T_top,-1,fl_Q(1))
+          IF (ABS(fl_Q(1))>max_flux_plate) THEN
+             WRITE(*,*) 'max heating fix applied',fl_Q(1),max_flux_plate
+             fl_Q(1) = fl_Q(1)/ABS(fl_Q(1))*max_flux_plate
+          END IF
+       END IF
           
 
 

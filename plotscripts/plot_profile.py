@@ -10,15 +10,27 @@
 #6. Run the script! (python plot_profile.py)
 #7. Open the outputfile in the imageviewer of your choice.
 
+#Loading modules and setting fonts
+import numpy
+import matplotlib.pyplot as plt
+from matplotlib import rc
+import matplotlib
+rc('text', usetex=True)
+rc('font', size='10')
+rc('font', family='serif')
 
 
 #Settings 
-dx           = 3.5 
+dx           = 1.0 
 timeunit     = 'days'
+outputfile   = 'pic_profile'
+outputformat = 'pdf' #e.g. png, jpg, pdf
+free_flag    = 0     #1: freeboard is included, 0:freeboard is not included 
 
 #select output times for profiles 
 time      = ([70,80,90,100,110,120,130])
 
+#Reading in data 
 var1name     = 'Bulk salinity'
 var1unit     = '[g/kg]'
 var1         = numpy.loadtxt("./dat_S_bu.dat")
@@ -31,22 +43,11 @@ var3name     = 'Solid fraction'
 var3unit     = '[fraction]'
 var3         = numpy.loadtxt("./dat_psi_s.dat")
 
-outputfile   = 'pic_profile'
-outputformat = 'pdf' #e.g. png, jpg, pdf
-free_flag    = 0     #1: freeboard is included, 0:freeboard is not included 
 
 
 tlen      = len(time)
 
 
-#Loading modules and setting fonts
-import numpy
-import matplotlib.pyplot as plt
-from matplotlib import rc
-import matplotlib
-rc('text', usetex=True)
-rc('font', size='10')
-rc('font', family='serif')
 
 
 #Loading data
@@ -74,14 +75,14 @@ i=0
 j=0
 while (i<xlen):
   while (j<ylen):
-    depth_step[i,2*j]	  = -sum(thick[i,0:j])+freeboard[i]
+    depth_step[i,2*j]	= -sum(thick[i,0:j])+freeboard[i]
     depth_step[i,2*j+1]	= -sum(thick[i,0:j])-thick[i,j]+freeboard[i]
-    var1_step[i,2*j]	   = var1[i,j]
-    var1_step[i,2*j+1]	 = var1[i,j]
-    var2_step[i,2*j]	   = var2[i,j]
-    var2_step[i,2*j+1]	 = var2[i,j]
-    var3_step[i,2*j]	   = var3[i,j]
-    var3_step[i,2*j+1]	 = var3[i,j]
+    var1_step[i,2*j]	= var1[i,j]
+    var1_step[i,2*j+1]	= var1[i,j]
+    var2_step[i,2*j]	= var2[i,j]
+    var2_step[i,2*j+1]	= var2[i,j]
+    var3_step[i,2*j]	= var3[i,j]
+    var3_step[i,2*j+1]	= var3[i,j]
     j=j+1
   i=i+1
   j=0
@@ -107,7 +108,7 @@ fig1.subplots_adjust(top=0.90)
 fig1.subplots_adjust(bottom=0.08)
 
 #######################################################
-#Plotting temperature
+#Plotting salinity
 #######################################################
 ax1 = fig1.add_subplot(131)
 i=0
@@ -120,7 +121,7 @@ plt.xlabel(r''+var1name+' '+var1unit)
 #ax1.xaxis.set_ticklabels([])
 
 #######################################################
-#Plotting liquid fraction
+#Plotting temperature
 #######################################################
 ax2 = fig1.add_subplot(132)
 i=0
@@ -136,7 +137,7 @@ leg = plt.legend(handles,labels,ncol=tlen, mode='expand',handletextpad=1. , titl
 leg.get_frame().set_linewidth(0)
 
 #######################################################
-#Plotting salinity
+#Plotting liquid fraction
 #######################################################
 ax3 = fig1.add_subplot(133)
 i=0

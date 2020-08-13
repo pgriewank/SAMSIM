@@ -114,10 +114,12 @@ CONTAINS
   !! Snow makes the thickness grow according to the density of new snow(rho_snow),  while rain falls into the snow without increasing snow depth.
   !! It is necessary to calculate the new psi_s_snow to ensure proper melting in snow_thermo.
   !!
+  !! The two meter temperature (T2m) is used to determine the thermal energy of the snow/rain. Snow is assumed to never be higher than -1 Celsius. 
+  !! 
   !!
   !! @par Revision History
   !! Sired by Philipp Griewank,  IMPRS (2010-12-14)
-  !!
+  !! Fixed T bug by Philipp Griewank, UzK (2020-08-13)
   SUBROUTINE snow_precip (m_snow, H_abs_snow, thick_snow, psi_s_snow, dt, liquid_precip_in, T2m, solid_precip_in)
     REAL(wp), INTENT(inout)        :: m_snow, H_abs_snow, thick_snow
     REAL(wp), INTENT(inout)        :: psi_s_snow 
@@ -141,7 +143,8 @@ CONTAINS
     m_snow     = m_snow     +dt*rho_l*(liquid_precip+solid_precip)
     thick_snow = thick_snow +d_thick
     H_abs_snow = H_abs_snow +dt*T2m*liquid_precip*rho_l*c_l
-    H_abs_snow = H_abs_snow +dt*-1._wp*solid_precip*rho_l*c_s
+    !H_abs_snow = H_abs_snow +dt*-1._wp*solid_precip*rho_l*c_s !Not sure why a constant -1 was used here, replaced with T2m 2020-08-13
+    H_abs_snow = H_abs_snow +dt*min(T2m,-1._wp)*solid_precip*rho_l*c_s
     H_abs_snow = H_abs_snow -dt*solid_precip*rho_l*latent_heat
 
   END SUBROUTINE snow_precip

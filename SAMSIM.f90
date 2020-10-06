@@ -49,6 +49,7 @@
 !! - Especially if you are interested in dissolved gases, you should first make yourself familiar with the bgc_advection subroutine in mo_mass.f90. 
 !!
 !! Know issues/Tips and Tricks:
+!! - If you are using a mac and run into this error:  dyld: Library not loaded: @rpath/libgfortran.3.dylib, this solution worked for Max Thomas and can hopefully help other anaconda users:  export DYLD_FALLBACK_LIBRARY_PATH="/Users/max/opt/anaconda3/lib" 
 !! - If code changes have no effect, run "make clean" and then "make", for unknown reasons this is often needed when making changes to mo_parameters.f90
 !! - When bug hunting increase thick_0 and dt, this way the model runs faster, and the output is easier to sort through. 
 !! - Use debug_flag= 2 to output data of each layer at each timestep. Be careful, the output size can become very large! 
@@ -92,8 +93,8 @@ PROGRAM SAMSIM
   !##########################################################################################
   !Initialization
   !##########################################################################################
-  testcase    = 1                  !sets the testcase
-  description = 'default testcase 1'  !is written to dat_settings 
+  testcase    = 4                  !sets the testcase
+  description = 'testing snow_precip change'  !is written to dat_settings 
   !##########################################################################################
     
   PRINT*,'SAMSIM is getting ready'

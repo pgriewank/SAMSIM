@@ -57,9 +57,9 @@
 !! - Contact me :)
 !! 
 !! Contacts: 
-!! - Philipp Griewank: philipp.griewank@uni-koeln.de
-!! - Niels Fuchs: niels.fuchs@awi.de 
-!! - Dirk Notz: dirk.notz@mpimet.mpg.de
+!! - Philipp Griewank: philipp.griewank@univie.ac.at
+!! - Niels Fuchs: niels.fuchs@uni-hamburg.de
+!! - Dirk Notz: dirk.notz@uni-hamburg.de
 !! - Luise Zeigermann: zeigermannluise@gmail.com, when related to her Master Thesis
 !! @author Philipp Griewank
 !!
